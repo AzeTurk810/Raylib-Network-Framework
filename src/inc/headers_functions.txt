@@ -1,0 +1,418 @@
+//This text document translated by chatpgt so there can be a lot of syntax problem sorry about that.
+
+# RNF Framework Structure
+
+---
+
+# /Core
+
+The Core folder contains the main networking system of the framework. Every other module depends on it.
+
+## Library 1 : Server.h (Dedicated Server Management)
+
+**Goal:**
+Handles everything related to hosting and managing a multiplayer server.
+
+**Functions**
+
+* Create()
+* Stop()
+* Poll()
+* Broadcast()
+* Send()
+* Kick()
+* DisconnectClient()
+* DisconnectAll()
+* PlayerCount()
+* Clients()
+* Running()
+* GetPort()
+* SetMaxPlayers()
+
+---
+
+## Library 2 : Client.h (Client Networking)
+
+**Goal:**
+Provides an easy interface for connecting to servers and communicating with them.
+
+**Functions**
+
+* Connect()
+* Disconnect()
+* Reconnect()
+* Poll()
+* Send()
+* Connected()
+* GetPing()
+* GetServerAddress()
+* ConnectionState()
+
+---
+
+## Library 3 : Events.h (Event System)
+
+**Goal:**
+Converts low-level ENet events into easy-to-use callbacks.
+
+**Functions**
+
+* OnConnect()
+* OnDisconnect()
+* OnPacket()
+* OnTimeout()
+* OnReconnect()
+* OnError()
+* OnPing()
+* RemoveListener()
+
+---
+
+## Library 4 : Packet.h (Packet Management)
+
+**Goal:**
+Creates, sends, receives, and manages network packets.
+
+**Functions**
+
+* SendPacket()
+* BroadcastPacket()
+* RegisterPacket()
+* GetPacketID()
+* CreatePacket()
+* DestroyPacket()
+
+---
+
+## Library 5 : Serialization.h (Serialization System)
+
+**Goal:**
+Converts C++ objects into byte arrays and restores them back.
+
+**Functions**
+
+* Serialize()
+* Deserialize()
+* Write()
+* Read()
+* Compress()
+* Decompress()
+* ValidatePacket()
+
+---
+
+## Library 6 : Memory.h (Memory Management)
+
+**Goal:**
+Optimizes memory allocation for networking.
+
+**Functions**
+
+* AllocatePacket()
+* FreePacket()
+* BufferPool()
+* ObjectPool()
+* ClearPools()
+
+---
+
+## Library 7 : Threading.h (Thread Management)
+
+**Goal:**
+Runs networking independently from the game loop.
+
+**Functions**
+
+* StartNetworkThread()
+* StopNetworkThread()
+* Lock()
+* Unlock()
+* PushTask()
+* Wait()
+
+---
+
+# /Lobby
+
+Contains multiplayer lobby features.
+
+## Library 1 : Lobby.h (Lobby System)
+
+**Goal:**
+Creates and manages multiplayer rooms.
+
+**Functions**
+
+* CreateLobby()
+* JoinLobby()
+* LeaveLobby()
+* DestroyLobby()
+* StartGame()
+* StopGame()
+* PlayerList()
+* Host()
+
+---
+
+## Library 2 : Chat.h (Lobby Chat)
+
+**Goal:**
+Allows players to communicate inside a lobby.
+
+**Functions**
+
+* SendMessage()
+* ReceiveMessage()
+* ClearHistory()
+* MutePlayer()
+* UnmutePlayer()
+
+---
+
+## Library 3 : Matchmaking.h (Matchmaking)
+
+**Goal:**
+Provides automatic player matching.
+
+**Functions**
+
+* FindMatch()
+* CancelSearch()
+* InvitePlayer()
+* AcceptInvite()
+* CreatePrivateLobby()
+* CreatePublicLobby()
+
+---
+
+# /Sync
+
+Responsible for synchronizing game data between clients.
+
+## Library 1 : TransformSync.h (Transform Synchronization)
+
+**Goal:**
+Automatically synchronizes positions, rotations, and scales.
+
+**Functions**
+
+* SyncPosition()
+* SyncRotation()
+* SyncScale()
+* EnableInterpolation()
+
+---
+
+## Library 2 : VariableSync.h (Variable Synchronization)
+
+**Goal:**
+Keeps gameplay variables synchronized.
+
+**Functions**
+
+* SyncVariable()
+* SyncHealth()
+* SyncAmmo()
+* SyncScore()
+* SyncCustom()
+
+---
+
+## Library 3 : RPC.h (Remote Procedure Calls)
+
+**Goal:**
+Executes functions remotely across the network.
+
+**Functions**
+
+* RegisterRPC()
+* CallRPC()
+* RemoveRPC()
+* BroadcastRPC()
+
+---
+
+## Library 4 : Snapshot.h (World Snapshot)
+
+**Goal:**
+Stores and distributes complete game states.
+
+**Functions**
+
+* CreateSnapshot()
+* LoadSnapshot()
+* SendSnapshot()
+* ReceiveSnapshot()
+
+---
+
+# /GUI
+
+Provides ready-to-use Raylib GUI components.
+
+## Library 1 : GUI.h (Main GUI System)
+
+**Goal:**
+Controls the framework GUI.
+
+**Functions**
+
+* Begin()
+* End()
+* Window()
+* Panel()
+* Theme()
+
+---
+
+## Library 2 : Widgets.h (Widgets)
+
+**Goal:**
+Collection of reusable GUI components.
+
+**Functions**
+
+* Button()
+* Label()
+* TextBox()
+* Slider()
+* CheckBox()
+* ProgressBar()
+* ChatBox()
+* PlayerList()
+
+---
+
+## Library 3 : DebugOverlay.h (Debug Overlay)
+
+**Goal:**
+Displays live networking statistics.
+
+**Functions**
+
+* DrawFPS()
+* DrawPing()
+* DrawBandwidth()
+* DrawPlayers()
+* DrawPacketRate()
+* DrawMemory()
+
+---
+
+# /Tools
+
+Developer utilities.
+
+## Library 1 : Logger.h (Logging System)
+
+**Goal:**
+Provides logging for debugging and diagnostics.
+
+**Functions**
+
+* Info()
+* Warning()
+* Error()
+* Debug()
+* Fatal()
+* SaveLog()
+
+---
+
+## Library 2 : Profiler.h (Performance Profiler)
+
+**Goal:**
+Measures framework performance.
+
+**Functions**
+
+* Start()
+* Stop()
+* Reset()
+* Report()
+* GetStatistics()
+
+---
+
+## Library 3 : Replay.h (Replay System)
+
+**Goal:**
+Records and replays networking sessions.
+
+**Functions**
+
+* StartRecording()
+* StopRecording()
+* SaveReplay()
+* LoadReplay()
+* PlayReplay()
+
+---
+
+## Library 4 : PacketInspector.h (Packet Inspector)
+
+**Goal:**
+Monitors every packet passing through the framework.
+
+**Functions**
+
+* StartCapture()
+* StopCapture()
+* ViewPackets()
+* ExportCapture()
+
+---
+
+# /Integration
+
+Handles communication with third-party libraries.
+
+## Library 1 : ENetBackend.h (ENet Integration)
+
+**Goal:**
+Wraps all ENet functionality behind the RNF API.
+
+**Functions**
+
+* InitializeENet()
+* ShutdownENet()
+* CreateHost()
+* ConnectPeer()
+* SendPacket()
+* ReceivePacket()
+* ServiceHost()
+
+---
+
+## Library 2 : RaylibBackend.h (Raylib Integration)
+
+**Goal:**
+Connects the framework with Raylib.
+
+**Functions**
+
+* DrawText()
+* DrawTexture()
+* GetFrameTime()
+* GetMousePosition()
+* GetScreenSize()
+
+---
+
+## Library 3 : RayGuiBackend.h (raygui Integration)
+
+**Goal:**
+Provides a bridge between RNF and raygui.
+
+**Functions**
+
+* Button()
+* TextBox()
+* Slider()
+* Window()
+* ListView()
+* ProgressBar()
+
+
+  //This text document translated by chatpgt so there can be a lot of syntax problem sorry about that.
+
