@@ -1,0 +1,7 @@
+{
+	"InstallScripts" : 
+	[
+		"/home/mrcat/Coding/Raylib-Network-Framework/src/build/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

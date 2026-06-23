@@ -1,0 +1,3 @@
+/home/mrcat/Coding/Raylib-Network-Framework/src/build/CMakeFiles/game.dir
+/home/mrcat/Coding/Raylib-Network-Framework/src/build/CMakeFiles/edit_cache.dir
+/home/mrcat/Coding/Raylib-Network-Framework/src/build/CMakeFiles/rebuild_cache.dir
