@@ -4,7 +4,6 @@
 #include "Core/Events.h"
 #include "Core/Packet.h"
 #include "Core/Server.h"
-#include "Core/Types.h"
 
 #include "Lobby/Lobby.h"
 
